@@ -1,8 +1,8 @@
 import './globals.css';
 
 export const metadata = {
-  title: 'Interactive Developer Ecosystem & Repository Visualizer',
-  description: 'Deep dive into code structures, developer impact, reviewer collaborations, and repository star metrics visualized with real-time GraphQL API connection caching.',
+  title: 'git-viz | Interactive Repository Visualizer',
+  description: 'Deep dive into code structures, developer impact, reviewer collaborations, and repository metrics visualized dynamically.',
 };
 
 export default function RootLayout({ children }) {
