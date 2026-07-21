@@ -58,6 +58,13 @@ app.get('/api/repo/:owner/:repo', async (req, res) => {
       });
     }
 
+    if (error.message === 'RATE_LIMIT_EXCEEDED') {
+      return res.status(403).json({
+        error: 'RATE_LIMIT_EXCEEDED',
+        message: 'The GitHub API rate limit was exceeded. Please configure a GITHUB_PAT in backend/.env to continue querying live public/private repositories.'
+      });
+    }
+
     if (error.message === 'GITHUB_PAT_MISSING') {
       return res.status(401).json({
         error: 'AUTH_REQUIRED',

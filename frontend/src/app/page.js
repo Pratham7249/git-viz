@@ -6,6 +6,7 @@ import MetricsPanel from '../components/MetricsPanel';
 import NodeInspector from '../components/NodeInspector';
 import GraphVisualizer from '../components/GraphVisualizer';
 import DirectoryHeatmap from '../components/DirectoryHeatmap';
+import ArchitectPanel from '../components/ArchitectPanel';
 import { fetchRepositoryEcosystem, getBackendHealth } from '../utils/api';
 import { RefreshCw, Home, Compass, Radio, AlertTriangle } from 'lucide-react';
 
@@ -185,7 +186,7 @@ export default function HomeView() {
                 />
               </div>
 
-              {/* Right Column: Dynamic Tabs (Force Network Graph or Directory Heatmap) */}
+              {/* Right Column: Dynamic Tabs (Force Network Graph, Directory Heatmap, or Architect Panel) */}
               <div className="dash-canvas-col">
                 <div className="tab-control-bar glass-panel">
                   <button 
@@ -199,6 +200,12 @@ export default function HomeView() {
                     onClick={() => setActiveTab('tree')}
                   >
                     Repository Directory Heatmap
+                  </button>
+                  <button 
+                    className={`tab-btn ${activeTab === 'architect' ? 'active' : ''}`}
+                    onClick={() => setActiveTab('architect')}
+                  >
+                    AI System Architect & Time-Saver
                   </button>
                 </div>
                 
@@ -217,8 +224,13 @@ export default function HomeView() {
                         Node sized by total contribution intensity (commits + PR reviews). Drag nodes to reposition network.
                       </div>
                     </>
-                  ) : (
+                  ) : activeTab === 'tree' ? (
                     <DirectoryHeatmap 
+                      directoryTree={repoData.directoryTree} 
+                      repoInfo={repoData.repository}
+                    />
+                  ) : (
+                    <ArchitectPanel 
                       directoryTree={repoData.directoryTree} 
                       repoInfo={repoData.repository}
                     />
