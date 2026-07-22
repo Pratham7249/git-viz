@@ -1,5 +1,7 @@
 # GitViz: Interactive Developer Ecosystem & Repository Visualizer
 
+<!-- Deployment trigger commit -->
+
 GitViz is a developer analytics tool that fetches public or private repository statistics from the GitHub GraphQL API, processes contributors' interactions, and visualizes codebase complexity and collaboration topologies. 
 
 It provides teams with insights into ownership distribution, developer network clusters, and module churn.
